@@ -1,15 +1,20 @@
 ---
-framework: mocha
+framework: jest
 preRun:
      command:
-        - npm install
+        - yarn install --immutable
+        - yarn run build
 preMerge:
   pattern:
-    - "./**/*.spec.js"
+    - "./test/*.js"
+  env: 
+    NODE_ENV: test
 postMerge:
-  pattern: 
-    - "./**/*.spec.js"
+  pattern:
+    - "./test/*.js"
+  env: 
+    NODE_ENV: test
 postRun:
      command:
-        - node --version
+        - yarn --version
 version: 1.0
